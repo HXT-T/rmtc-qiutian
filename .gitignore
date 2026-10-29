@@ -1,0 +1,6 @@
+# Run logs and local scratch never belong in the submission.
+logs/
+work/
+__pycache__/
+*.pyc
+*.jsonl

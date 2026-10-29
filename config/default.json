@@ -1,0 +1,20 @@
+{
+  "total_ticks": 0,
+  "attack_damage": 20,
+  "defended_damage": 10,
+  "attack_range": 2,
+  "resource_cap": 120,
+  "damage_cap": 500,
+  "resource_count": 16,
+  "resource_total": 200,
+  "explore_weight": 1.0,
+  "kill_reward": 60,
+  "death_penalty": 60,
+  "beam_width": 20,
+  "beam_depth": 4,
+  "ai_timeout": 6,
+  "ai_min_interval": 1,
+  "ai_max_tokens": 1024,
+  "ai_max_calls": 0,
+  "ai_max_age": 40
+}

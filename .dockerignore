@@ -1,0 +1,7 @@
+tests
+work
+logs
+docs
+**/__pycache__
+**/*.pyc
+*.jsonl
