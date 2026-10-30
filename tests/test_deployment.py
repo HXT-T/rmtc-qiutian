@@ -21,16 +21,16 @@ class DeploymentTests(unittest.TestCase):
                 main(['run', '--stage', '2', '--contest', '--domain-id', '95'])
 
     def test_contest_refuses_a_model_override(self):
-        # Organiser rule: only the unified default model; a stray RMTC_AI_MODEL must stop the launch.
+        # Organiser rule: only the unified model; a stray RMTC_AI_MODEL must stop the launch.
         env = {'RMTC_TEAM_TOKEN': 'do-not-log', 'RMTC_AI_MODEL': 'other-model'}
         with patch.dict(os.environ, env, clear=True):
             with self.assertRaises(SystemExit):
                 main(['run', '--stage', '2', '--contest', '--domain-id', '95',
                       '--ai-url', 'http://127.0.0.1:9/v1/chat/completions'])
 
-    def test_requests_carry_no_model_by_default(self):
-        self.assertEqual(Config().ai_model, '')
-        self.assertEqual(Config().ai_max_tokens, 1024)
+    def test_handbook_model_and_output_limit_are_the_defaults(self):
+        self.assertEqual(Config().ai_model, 'deepseek-flash')
+        self.assertEqual(Config().ai_max_tokens, 512)
 
     def test_formal_token_cannot_cross_session(self):
         worker = AIWorker(Config(contest=True), 'do-not-log')

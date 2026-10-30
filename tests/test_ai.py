@@ -76,7 +76,7 @@ class AITests(unittest.TestCase):
             self.assertIn("Content-Length", headers)
             self.assertNotIn("Transfer-Encoding", headers)
             self.assertIs(body["stream"], False)
-            self.assertNotIn("model", body)
+            self.assertEqual(body["model"], "deepseek-flash")
             self.assertEqual(len(gateway.requests), 1)
             self.assertNotIn("test-not-a-real-token", repr(logs))
 

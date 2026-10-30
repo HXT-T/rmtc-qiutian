@@ -24,13 +24,13 @@ class Config:
     # resource value during the opening (fades to zero by Tick 150).
     explore_weight: float = 1.0  # adopted: batch-perf8-reconfirm500 (fresh distinct 24x24 maps, 500 ms, SPRT H1)
     ai_url: str = "http://127.0.0.1:8080/v1/chat/completions"
-    ai_model: str = ""
+    ai_model: str = "deepseek-flash"  # handbook and gateway sample: the unified model
     # Upstream may take up to 30 s; a client timeout below the model latency still consumes quota.
     ai_timeout: float = 6.0  # candidate 20 s pending the slow-model test
     ai_max_inflight: int = 1  # candidate 2 (protocol allows 2 per token; second only for new text)
     ai_min_interval: float = 1.0
-    # Organiser guidance: 512-1024 tokens (thinking off, 0.78-0.99 s); recorded plans peak near 450 tokens.
-    ai_max_tokens: int = 1024
+    # Participant handbook: max_tokens 512 (thinking off); recorded plans peak near 450 tokens.
+    ai_max_tokens: int = 512
     # Gateway confirmed JSON mode; matches the practice proxy all real-LLM tests used.
     ai_json_mode: bool = True
     # The formal gateway forwards every field except model and does not switch thinking off;

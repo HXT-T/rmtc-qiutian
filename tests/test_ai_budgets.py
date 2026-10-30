@@ -133,8 +133,8 @@ class BudgetTests(unittest.TestCase):
             finish(worker)
             body = gateway.requests[0][2]
         self.assertEqual(body['thinking'], {'type': 'disabled'})
-        self.assertNotIn('model', body)  # the gateway fills in its unified model
-        self.assertEqual((body['max_tokens'], body['response_format']), (1024, {'type': 'json_object'}))
+        self.assertEqual(body['model'], 'deepseek-flash')  # handbook: the unified model
+        self.assertEqual((body['max_tokens'], body['response_format']), (512, {'type': 'json_object'}))
 
     def test_gateway_rejecting_optional_fields_drops_them_one_at_a_time(self):
         reject = lambda body: 400 if 'response_format' in body or 'thinking' in body else 200

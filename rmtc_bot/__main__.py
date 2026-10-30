@@ -70,9 +70,9 @@ def main(argv=None):
             parser.error("contest requires --domain-id or explicit ROS_DOMAIN_ID")
         if args.stage == 2 and (not os.environ.get("RMTC_TEAM_TOKEN") or not (args.ai_url or values.get("ai_url"))):
             parser.error("stage 2 contest requires an explicit AI gateway and RMTC_TEAM_TOKEN")
-        if args.model or values.get("ai_model"):
-            # Organiser: only the unified default model is allowed, so the request carries no model field.
-            parser.error("contest must use the organiser's default model: unset RMTC_AI_MODEL / --model")
+        if (args.model or values.get("ai_model") or Config.ai_model) != Config.ai_model:
+            # Organiser: only the unified model is allowed.
+            parser.error("contest must use the organiser's unified model deepseek-flash: unset RMTC_AI_MODEL / --model")
     for key, value in (("ROS_DOMAIN_ID", domain), ("ROS_LOCALHOST_ONLY", args.localhost_only),
                        ("RMW_IMPLEMENTATION", args.rmw)):
         if value is not None:

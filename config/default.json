@@ -14,7 +14,7 @@
   "beam_depth": 4,
   "ai_timeout": 6,
   "ai_min_interval": 1,
-  "ai_max_tokens": 1024,
+  "ai_max_tokens": 512,
   "ai_max_calls": 0,
   "ai_max_age": 40
 }
