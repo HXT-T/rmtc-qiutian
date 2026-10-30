@@ -92,3 +92,7 @@ python3 -m unittest discover -s tests -t . -q                # 95 项测试
 python3 -m rmtc_bot replay --stage 1 --input 感知.jsonl --log logs/replay.jsonl   # 离线回放，不发 HTTP/ROS
 python3 -m rmtc_bot analyze logs/match.jsonl                 # 赛后审计
 ```
+
+## 开发说明
+
+本项目使用 AI 辅助开发：前期使用 ChatGPT，后续使用 Claude（Anthropic）协助完成算法迭代、测试平台与文档。
